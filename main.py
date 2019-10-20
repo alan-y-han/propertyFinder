@@ -11,6 +11,8 @@ def getPlaces(soup, places):
 
 def getNextURL(soup):
     linkbar = soup.find('div', attrs={'class': 'paginate bg-muted'})
+    if not linkbar:
+        return False, None
     links = linkbar.findAll('a')
     for link in links:
         if link.text == 'Next':
